@@ -1,7 +1,11 @@
 ---
+import Layout from '../layouts/Layout.astro';
+import type { vehicule } from '../type';
+
 const apiBaseUrl = import.meta.env.API_URL;
 
-let vehicules = [];
+let vehicules: vehicule[] = [];
+
 try {
     const response = await fetch(`${apiBaseUrl}/api/vehicules`);
     if (response.ok) {
@@ -10,9 +14,6 @@ try {
 } catch (error) {
     console.error("Erreur de fetch :", error);
 }
-
-import Layout from '../layouts/Layout.astro';
-import type { vehicule } from '../type';
 ---
 
 <Layout title="Catalogue Centra">
@@ -39,5 +40,5 @@ import type { vehicule } from '../type';
 <style>
   .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
   .card { border: 1px solid #ccc; padding: 1rem; border-radius: 8px; }
-  img { max-width: 100%; height: auto; border-radius: 4px; }
+  img { max-width: 100%; height: auto; border-radius: 4px; display: block; margin-bottom: 10px; }
 </style>

@@ -1,5 +1,31 @@
-<div class="welcome-section flex flex-col items-center justify-center text-center h-[2211.8px]/4">
-    <p>Establish MCMXCIX</p>
-    <h1 class="title text-[72px] text-center font-bold">Junction Retro</h1>
-    <p> ARCHIVAL AUTOMOTIVE EXCELLENCE</p>
-</div>
+---
+import welcomeImage from '../assets/welcome.jpeg';
+import { Image } from 'astro:assets';
+---
+
+<section class="relative h-screen w-full overflow-hidden bg-slate-900">
+  <div class="absolute inset-0">
+    <Image
+      src={ welcomeImage }
+      alt="Classic Porsche" 
+      class="h-full w-full object-cover opacity-60 grayscale"
+    />
+    <div class="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/60"></div>
+  </div>
+
+  <div class="relative z-10 flex h-full flex-col items-center justify-center text-center px-4">
+    <span class="mb-4 text-xs tracking-[0.3em] text-slate-300 uppercase">
+      Established MCMXCIX
+    </span>
+    
+    <h1 class="text-5xl md:text-8xl font-serif text-white tracking-widest uppercase mb-6">
+      Junction Retro
+    </h1>
+
+    <div class="w-24 h-[1px] bg-slate-500 mb-6"></div>
+
+    <p class="text-sm md:text-base tracking-[0.4em] text-slate-400 uppercase">
+      Archival Automotive Excellence
+    </p>
+  </div>
+</section>

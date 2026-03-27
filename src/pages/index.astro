@@ -1,4 +1,8 @@
 ---
+import Caroussel from '../components/Caroussel.astro';
+import Contact from '../components/Contact.astro';
+import Presentation from '../components/Presentation.astro';
+import WelcomeSection from '../components/WelcomeSection.astro';
 import Layout from '../layouts/Layout.astro';
 import type { vehicule } from '../type';
 
@@ -18,22 +22,10 @@ try {
 
 <Layout title="Catalogue Centra">
   <main>
-    <h1>Nos Véhicules</h1>
-    
-    {vehicules.length === 0 && <p>Aucun véhicule trouvé ou erreur API.</p>}
-
-    <div class="grid">
-      {vehicules.map((v: vehicule) => (
-        <div class="card">
-          {v.images && v.images.length > 0 && (
-            <img src={v.images[0]} alt={v.model} />
-          )}
-          <h2>{v.model}</h2>
-          <p>{v.price} €</p>
-          <a href={`/vehicule/${v.id}`}>Détails</a>
-        </div>
-      ))}
-    </div>
+	<WelcomeSection />
+    <Caroussel />
+	<Presentation />
+	<Contact />
   </main>
 </Layout>
 

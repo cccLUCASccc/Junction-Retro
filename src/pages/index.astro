@@ -1,11 +1,33 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+const apiBaseUrl = import.meta.env.API_URL;
+const response = await fetch(`${apiBaseUrl}/api/vehicules`);
+const vehicules = await response.json();
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout>
-	<Welcome />
+<Layout title="Catalogue Centra">
+  <main>
+    <h1>Bienvenue chez Centra</h1>
+    <div class="grid">
+      {vehicules.map((v: any) => (
+        <article class="card">
+          {v.images && v.images.length > 0 ? (
+            <img src={v.images[0]} alt={v.name} width="300" />
+          ) : (
+            <div class="no-image">Pas d'image</div>
+          )}
+          <h2>{v.name}</h2>
+          <p>{v.price} €</p>
+          <a href={`/vehicule/${v.id}`}>Voir les détails</a>
+        </article>
+      ))}
+    </div>
+  </main>
 </Layout>
+
+<style>
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .card { border: 1px solid #ccc; padding: 1rem; border-radius: 8px; }
+  img { max-width: 100%; height: auto; border-radius: 4px; }
+</style>

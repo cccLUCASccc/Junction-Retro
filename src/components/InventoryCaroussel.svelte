@@ -1,6 +1,7 @@
 <script lang="ts">
   import { fade, fly } from 'svelte/transition';
   import type { vehicule } from '../type';
+    import BookingButton from './BookingButton.svelte';
 
   let { vehicules = [] } = $props<{ vehicules: vehicule[] }>();
   let currentIndex = $state(0);
@@ -16,9 +17,18 @@
     
     <div class="flex justify-between items-center mb-16">
       <h2 class="text-3xl font-serif tracking-widest uppercase text-slate-900">Featured Archive</h2>
+      {#if vehicules.length > 1}
       <div class="flex gap-4">
         <button on:click={prev} class="w-12 h-12 border border-slate-300 rounded-full hover:bg-black hover:text-white transition-all duration-300">←</button>
         <button on:click={next} class="w-12 h-12 border border-slate-300 rounded-full hover:bg-black hover:text-white transition-all duration-300">→</button>
+      </div>
+      {/if}
+
+      <div>
+        <BookingButton />
+        <span class="text-sm tracking-[0.2em] text-slate-400 uppercase font-medium">
+          {currentIndex + 1} / {vehicules.length}
+        </span>
       </div>
     </div>
 
@@ -35,13 +45,13 @@
             {current.model}
           </h3>
 
-          <div class="max-w-md mb-8 pr-4 h-48 overflow-y-auto custom-scrollbar">
+          <div class="max-w-md mb-8 pr-4 h-[500px] overflow-y-auto custom-scrollbar">
             <p class="text-slate-600 text-lg leading-relaxed italic font-light">
               {current.description}
             </p>
           </div>
 
-          <div class="text-4xl font-light text-slate-900 mb-10 border-b border-slate-300 pb-6 w-full">
+          <div class="text-4xl font-light text-slate-900 mt-12 mb-10 border-b border-slate-300 pb-6 w-full">
             {current.price.toLocaleString()} €
           </div>
 

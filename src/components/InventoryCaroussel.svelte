@@ -60,7 +60,7 @@
 
         <div class="h-[650px] overflow-y-auto pr-4 custom-scrollbar">
           {#if current.images && current.images.length > 0}
-            <div class="columns-2 gap-4 space-y-4">
+            <div class="columns-1 md:columns-2 gap-4 space-y-4">
               {#each current.images as image, i}
                 {#key currentIndex}
                   <div 

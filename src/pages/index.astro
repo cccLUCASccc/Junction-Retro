@@ -1,7 +1,6 @@
 ---
 import InventoryCaroussel from '../components/InventoryCaroussel.svelte';
 import Contact from '../components/Contact.astro';
-import Presentation from '../components/Presentation.astro';
 import WelcomeSection from '../components/WelcomeSection.astro';
 import Layout from '../layouts/Layout.astro';
 import type { vehicule } from '../type';
@@ -16,7 +15,6 @@ if (res.ok) vehicules = await res.json();
   <main>
     <WelcomeSection />
     <InventoryCaroussel vehicules={vehicules} client:load />
-    <Presentation />
     <Contact />
   </main>
 </Layout>

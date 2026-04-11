@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import Footer from '../components/Footer.astro';
 ---
 
 <!doctype html>
@@ -11,11 +12,12 @@ import '../styles/global.css';
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="generator" content={Astro.generator} />
 		<meta name="referrer" content="no-referrer-when-downgrade">
-		<title>Astro Basics</title>
+		<title>Junction Retro</title>
 	</head>
 	<body>
 		<slot />
 	</body>
+	<Footer />
 </html>
 
 <style>

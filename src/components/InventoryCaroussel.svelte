@@ -1,6 +1,7 @@
 <script lang="ts">
   import { fade, fly } from 'svelte/transition';
   import type { vehicule } from '../type';
+    import BookingButton from './BookingButton.svelte';
 
   let { vehicules = [] } = $props<{ vehicules: vehicule[] }>();
   let currentIndex = $state(0);
@@ -15,10 +16,19 @@
   <div class="max-w-7xl mx-auto">
     
     <div class="flex justify-between items-center mb-16">
-      <h2 class="text-3xl font-serif tracking-widest uppercase text-slate-900">Featured Archive</h2>
+      <h2 class="text-3xl font-serif tracking-widest uppercase text-slate-900">Our Selection</h2>
+      {#if vehicules.length > 1}
       <div class="flex gap-4">
         <button on:click={prev} class="w-12 h-12 border border-slate-300 rounded-full hover:bg-black hover:text-white transition-all duration-300">←</button>
         <button on:click={next} class="w-12 h-12 border border-slate-300 rounded-full hover:bg-black hover:text-white transition-all duration-300">→</button>
+      </div>
+      {/if}
+
+      <div>
+        <BookingButton />
+        <span class="text-sm tracking-[0.2em] text-slate-400 uppercase font-medium">
+          {currentIndex + 1} / {vehicules.length}
+        </span>
       </div>
     </div>
 
@@ -35,13 +45,13 @@
             {current.model}
           </h3>
 
-          <div class="max-w-md mb-8 pr-4 h-48 overflow-y-auto custom-scrollbar">
+          <div class="max-w-md mb-8 pr-4 h-[500px] overflow-y-auto custom-scrollbar">
             <p class="text-slate-600 text-lg leading-relaxed italic font-light">
               {current.description}
             </p>
           </div>
 
-          <div class="text-4xl font-light text-slate-900 mb-10 border-b border-slate-300 pb-6 w-full">
+          <div class="text-4xl font-light text-slate-900 mt-12 mb-10 border-b border-slate-300 pb-6 w-full">
             {current.price.toLocaleString()} €
           </div>
 
@@ -50,7 +60,7 @@
 
         <div class="h-[650px] overflow-y-auto pr-4 custom-scrollbar">
           {#if current.images && current.images.length > 0}
-            <div class="columns-2 gap-4 space-y-4">
+            <div class="columns-1 md:columns-2 gap-4 space-y-4">
               {#each current.images as image, i}
                 {#key currentIndex}
                   <div 

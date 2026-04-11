@@ -69,7 +69,7 @@
                   >
                     <div class="flex items-center justify-center p-4 min-h-[150px]">
                       <img 
-                        src={image} 
+                        src={image.url} 
                         alt={`${current.model} - View ${i + 1}`}
                         class="w-full h-auto object-contain drop-shadow-[0_10px_15px_rgba(0,0,0,0.1)] group-hover:scale-105 group-hover:drop-shadow-[0_20px_25px_rgba(0,0,0,0.2)] transition-all duration-700"
                       />

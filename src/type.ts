@@ -4,5 +4,6 @@ export type vehicule = {
     year: string,
     description: string,
     price: number,
+    sold: boolean,
     images: string[]
 }

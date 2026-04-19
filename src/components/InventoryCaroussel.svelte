@@ -1,7 +1,7 @@
 <script lang="ts">
   import { fade, fly } from 'svelte/transition';
   import type { vehicule } from '../type';
-    import BookingButton from './BookingButton.svelte';
+  import BookingButton from './BookingButton.svelte';
 
   let { vehicules = [] } = $props<{ vehicules: vehicule[] }>();
   let currentIndex = $state(0);
@@ -12,80 +12,94 @@
   let current = $derived(vehicules[currentIndex]);
 </script>
 
-<section class="bg-[#F5F5F0] py-24 px-8 md:px-16 min-h-[800px] overflow-hidden">
-  <div class="max-w-7xl mx-auto">
+<section class="bg-[#F8F8F5] py-32 px-6 md:px-12 overflow-hidden border-t border-slate-100">
+  <div class="max-w-[1800px] mx-auto">
     
-    <div class="flex justify-between items-center mb-16">
-      <h2 class="text-4xl font-serif tracking-tight text-slate-900 italic">La Sélection</h2>
-      {#if vehicules.length > 1}
-      <div class="flex gap-4">
-        <button on:click={prev} class="w-12 h-12 border border-slate-200 rounded-full hover:bg-black hover:text-white transition-all duration-500 font-light text-xl">←</button>
-        <button on:click={next} class="w-12 h-12 border border-slate-200 rounded-full hover:bg-black hover:text-white transition-all duration-500 font-light text-xl">→</button>
+    <!-- Header Navigation -->
+    <div class="flex justify-between items-end mb-24 border-b border-slate-200 pb-12">
+      <div class="max-w-xl">
+        <h2 class="text-xs uppercase tracking-[0.6em] text-slate-400 font-bold mb-4">Curated Archive</h2>
+        <p class="text-5xl font-serif text-slate-900 italic tracking-tight">Pièces d'Exception</p>
       </div>
-      {/if}
-
-      <div class="flex items-center gap-8">
-        <BookingButton />
-        <span class="text-[10px] tracking-[0.3em] text-slate-400 uppercase font-bold">
-          {currentIndex + 1} / {vehicules.length}
-        </span>
+      
+      <div class="flex items-center gap-12">
+        <div class="flex gap-2">
+          <button on:click={prev} class="group w-14 h-14 flex items-center justify-center border border-slate-200 rounded-full hover:bg-black transition-all duration-500">
+            <span class="group-hover:text-white transition-colors text-2xl font-light">←</span>
+          </button>
+          <button on:click={next} class="group w-14 h-14 flex items-center justify-center border border-slate-200 rounded-full hover:bg-black transition-all duration-500">
+            <span class="group-hover:text-white transition-colors text-2xl font-light">→</span>
+          </button>
+        </div>
+        <div class="h-14 w-[1px] bg-slate-200 hidden md:block"></div>
+        <div class="hidden md:flex flex-col items-end">
+          <span class="text-3xl font-serif text-slate-900 leading-none">{String(currentIndex + 1).padStart(2, '0')}</span>
+          <span class="text-[10px] uppercase tracking-widest text-slate-400 font-bold mt-1">sur {vehicules.length}</span>
+        </div>
       </div>
     </div>
 
     {#if current}
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-start">
         
+        <!-- Left: Information (5 cols) - Sticky -->
         {#key currentIndex}
-        <div in:fly={{ x: -20, duration: 600 }} out:fade={{ duration: 300 }} class="flex flex-col h-full sticky top-24">
-          <span class="text-[10px] tracking-[0.6em] text-slate-400 uppercase font-bold mb-8 block">
-            Archives — No.{String(currentIndex + 1).padStart(3, '0')}
+        <div in:fly={{ x: -30, duration: 800, delay: 200 }} out:fade={{ duration: 400 }} class="lg:col-span-5 flex flex-col lg:sticky lg:top-40">
+          <span class="text-[10px] tracking-[0.8em] text-slate-400 uppercase font-bold mb-10 block">
+            Automotive Heritage — Arch. {current.id || '00' + (currentIndex + 1)}
           </span>
           
-          <h3 class="text-7xl md:text-8xl font-serif mb-10 text-slate-900 tracking-tight leading-[0.9] italic">
+          <h3 class="text-7xl md:text-[9rem] font-serif mb-12 text-slate-900 tracking-tighter leading-[0.85] italic">
             {current.model}
           </h3>
 
-          <div class="max-w-md mb-12 pr-10 h-[350px] overflow-y-auto custom-scrollbar border-l border-slate-100 pl-8">
-            <p class="text-slate-500 text-xl leading-relaxed font-light italic">
+          <div class="border-l-2 border-slate-900 pl-10 mb-16">
+            <p class="text-2xl md:text-3xl text-slate-600 leading-relaxed font-light italic max-w-lg">
               {current.description}
             </p>
           </div>
 
-          <div class="text-6xl font-serif text-slate-900 mt-auto mb-10 border-b border-slate-100 pb-10 w-full flex justify-between items-baseline">
-            <span class="text-[10px] uppercase tracking-[0.4em] text-slate-400 font-bold">Investissement</span>
-            <span>{current.price.toLocaleString()}€</span>
+          <div class="flex flex-col gap-10">
+            <div class="flex justify-between items-end border-b border-slate-200 pb-8">
+              <span class="text-[10px] uppercase tracking-[0.5em] text-slate-400 font-bold">Valeur Estimée</span>
+              <span class="text-5xl font-serif text-slate-900 tracking-tighter">{current.price.toLocaleString()}€</span>
+            </div>
+            
+            <div class="flex items-center gap-6">
+              <div class="flex-grow">
+                <BookingButton />
+              </div>
+              <p class="text-[10px] uppercase tracking-widest text-slate-400 max-w-[120px] leading-relaxed">
+                Expertise complète disponible sur demande.
+              </p>
+            </div>
           </div>
-
         </div>
         {/key}
 
-        <div class="h-[650px] overflow-y-auto pr-4 custom-scrollbar">
+        <!-- Right: Scrollable Gallery (7 cols) -->
+        <div class="lg:col-span-7">
           {#if current.images && current.images.length > 0}
-            <div class="columns-1 md:columns-2 gap-4 space-y-4">
+            <div class="flex flex-col gap-12">
               {#each current.images as image, i}
                 {#key currentIndex}
                   <div 
-                    in:fly={{ y: 20, delay: i * 50, duration: 800 }}
-                    class="relative overflow-hidden rounded-2xl bg-white shadow-sm border border-slate-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-700 group break-inside-avoid"
+                    in:fly={{ y: 40, delay: i * 150, duration: 1000 }}
+                    class="w-full bg-white shadow-sm border border-slate-100"
                   >
-                    <div class="flex items-center justify-center p-4 min-h-[150px]">
-                      <img 
-                        src={image.url} 
-                        alt={`${current.model} - View ${i + 1}`}
-                        class="w-full h-auto object-contain drop-shadow-[0_10px_15px_rgba(0,0,0,0.1)] group-hover:scale-105 group-hover:drop-shadow-[0_20px_25px_rgba(0,0,0,0.2)] transition-all duration-700"
-                      />
-                    </div>
-                    <div class="absolute bottom-2 right-2 text-[7px] uppercase tracking-tight text-slate-300 opacity-0 group-hover:opacity-100 transition-opacity">
-                      Shot_{String(i + 1).padStart(3, '0')}
-                    </div>
+                    <img 
+                      src={image.url} 
+                      alt={`${current.model} - View ${i + 1}`}
+                      class="w-full h-auto block" 
+                      loading="lazy"
+                    />
                   </div>
                 {/key}
               {/each}
             </div>
           {:else}
-            <div class="w-full h-full flex flex-col items-center justify-center bg-white rounded-2xl border border-dashed border-slate-200 text-center p-12">
-              <span class="text-4xl mb-4 opacity-50">📸</span>
-              <p class="text-xs uppercase text-slate-400 tracking-widest italic">No Archive Photos Available</p>
+            <div class="aspect-video w-full flex flex-col items-center justify-center bg-white border border-slate-100 italic text-slate-400 uppercase tracking-widest text-xs">
+              Documentation Photographique en cours...
             </div>
           {/if}
         </div>
@@ -96,10 +110,7 @@
 </section>
 
 <style>
-  .custom-scrollbar::-webkit-scrollbar { width: 3px; }
-  .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
-  .custom-scrollbar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
-  .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
-  
-  .custom-scrollbar { scrollbar-width: thin; scrollbar-color: #cbd5e1 transparent; }
+  :global(.font-serif) {
+    font-family: 'Instrument Serif', serif;
+  }
 </style>

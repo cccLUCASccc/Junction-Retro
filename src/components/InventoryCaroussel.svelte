@@ -19,7 +19,7 @@
     <div class="flex justify-between items-end mb-24 border-b border-slate-200 pb-12">
       <div class="max-w-xl">
         <h2 class="text-xs uppercase tracking-[0.6em] text-slate-400 font-bold mb-4">Curated Archive</h2>
-        <p class="text-5xl font-serif text-slate-900 italic tracking-tight">Pièces d'Exception</p>
+        <p class="text-5xl font-serif text-slate-900 italic tracking-tight">Exceptional Pieces</p>
       </div>
       
       <div class="flex items-center gap-12">
@@ -34,7 +34,7 @@
         <div class="h-14 w-[1px] bg-slate-200 hidden md:block"></div>
         <div class="hidden md:flex flex-col items-end">
           <span class="text-3xl font-serif text-slate-900 leading-none">{String(currentIndex + 1).padStart(2, '0')}</span>
-          <span class="text-[10px] uppercase tracking-widest text-slate-400 font-bold mt-1">sur {vehicules.length}</span>
+          <span class="text-[10px] uppercase tracking-widest text-slate-400 font-bold mt-1">out of {vehicules.length}</span>
         </div>
       </div>
     </div>
@@ -61,7 +61,7 @@
 
           <div class="flex flex-col gap-10">
             <div class="flex justify-between items-end border-b border-slate-200 pb-8">
-              <span class="text-[10px] uppercase tracking-[0.5em] text-slate-400 font-bold">Valeur Estimée</span>
+              <span class="text-[10px] uppercase tracking-[0.5em] text-slate-400 font-bold">Estimated Value</span>
               <span class="text-5xl font-serif text-slate-900 tracking-tighter">{current.price.toLocaleString()}€</span>
             </div>
             
@@ -70,7 +70,7 @@
                 <BookingButton />
               </div>
               <p class="text-[10px] uppercase tracking-widest text-slate-400 max-w-[120px] leading-relaxed">
-                Expertise complète disponible sur demande.
+                Full appraisal available upon request.
               </p>
             </div>
           </div>
@@ -99,7 +99,7 @@
             </div>
           {:else}
             <div class="lg:absolute lg:inset-0 aspect-video w-full flex flex-col items-center justify-center bg-white border border-slate-100 italic text-slate-400 uppercase tracking-widest text-xs">
-              Documentation Photographique en cours...
+              Photographic Documentation in progress...
             </div>
           {/if}
         </div>

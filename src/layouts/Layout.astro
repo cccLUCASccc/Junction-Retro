@@ -9,8 +9,8 @@ interface Props {
 }
 
 const { 
-	title = "Junction Retro | Excellence Automobile d'Exception", 
-	description = "Découvrez notre sélection exclusive de véhicules de collection et d'exception. Junction Retro, la référence pour les passionnés d'automobiles classiques.",
+	title = "Junction Retro | Exceptional Automotive Excellence", 
+	description = "Discover our exclusive selection of collector and exceptional vehicles. Junction Retro, the benchmark for classic car enthusiasts.",
 	image = "/logo.png"
 } = Astro.props;
 
@@ -18,7 +18,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://junction
 ---
 
 <!doctype html>
-<html lang="fr">
+<html lang="en">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
@@ -56,7 +56,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://junction
 					Junction<span class="text-slate-400 italic">Retro</span>
 				</a>
 				<div class="hidden md:flex items-center gap-10 text-[11px] uppercase tracking-[0.2em] font-semibold text-slate-500">
-					<a href="/" class="hover:text-black transition-colors">Accueil</a>
+					<a href="/" class="hover:text-black transition-colors">Home</a>
 					<a href="#inventory" class="hover:text-black transition-colors">Collection</a>
 					<a href="#contact" class="hover:text-black transition-colors">Contact</a>
 				</div>

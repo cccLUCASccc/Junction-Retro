@@ -3,37 +3,37 @@ import welcomeImage from '../assets/welcome.jpeg';
 import { Image } from 'astro:assets';
 ---
 
-<section class="relative h-[70vh] w-full overflow-hidden bg-slate-900 flex items-center">
+<section class="relative min-h-[85vh] w-full overflow-hidden bg-slate-900 flex items-center py-20">
   <div class="absolute inset-0">
     <Image
       src={ welcomeImage }
       alt="Classic Porsche 911" 
       class="h-full w-full object-cover opacity-50 grayscale hover:grayscale-0 transition-all duration-1000 ease-in-out"
     />
-    <div class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-black/90 via-black/40 to-transparent"></div>
   </div>
 
   <div class="relative z-10 max-w-7xl mx-auto px-6 md:px-12 w-full">
-    <div class="max-w-2xl" id="hero-content">
-      <span class="inline-block mb-4 text-[10px] tracking-[0.5em] text-slate-400 uppercase font-semibold hero-animate opacity-0">
+    <div class="max-w-3xl" id="hero-content">
+      <span class="inline-block mb-6 text-[10px] tracking-[0.5em] text-slate-400 uppercase font-semibold hero-animate opacity-0">
         Excellence Automobile • Est. 2026
       </span>
       
-      <h1 class="text-7xl md:text-[10rem] font-serif text-white tracking-tight leading-[0.85] mb-12 hero-animate opacity-0">
+      <h1 class="text-6xl md:text-[8rem] font-serif text-white tracking-tight leading-[0.9] mb-10 hero-animate opacity-0">
         L'Art de la <br/> <span class="italic font-light text-slate-300">Collection</span>
       </h1>
 
-      <div class="w-20 h-[1px] bg-white/40 mb-12 transition-all hover:w-40 duration-700 hero-animate opacity-0"></div>
+      <div class="w-20 h-[1px] bg-white/40 mb-10 hero-animate opacity-0 transition-all hover:w-40 duration-700"></div>
 
-      <p class="text-xl md:text-2xl text-slate-300 font-light max-w-xl leading-relaxed mb-12 italic hero-animate opacity-0">
-        Curateurs de raretés mécaniques et d'histoires oubliées.
+      <p class="text-lg md:text-xl text-slate-300 font-light max-w-xl leading-relaxed mb-12 italic hero-animate opacity-0">
+        Curateurs de raretés mécaniques et d'histoires oubliées. Une sélection méticuleuse pour les passionnés d'exception.
       </p>
 
-      <div class="flex flex-wrap gap-4 hero-animate opacity-0">
-        <a href="#inventory" class="px-8 py-4 bg-white text-black text-xs uppercase tracking-[0.2em] font-bold hover:bg-slate-200 transition-colors">
+      <div class="flex flex-wrap gap-5 hero-animate opacity-0">
+        <a href="#inventory" class="px-10 py-5 bg-white text-black text-[10px] uppercase tracking-[0.2em] font-bold hover:bg-slate-200 transition-all duration-300">
           Explorer la Collection
         </a>
-        <a href="#contact" class="px-8 py-4 border border-white/30 text-white text-xs uppercase tracking-[0.2em] font-bold hover:bg-white/10 transition-colors">
+        <a href="#contact" class="px-10 py-5 border border-white/30 text-white text-[10px] uppercase tracking-[0.2em] font-bold hover:bg-white/10 transition-all duration-300">
           Nous Contacter
         </a>
       </div>

@@ -16,43 +16,44 @@
   <div class="max-w-7xl mx-auto">
     
     <div class="flex justify-between items-center mb-16">
-      <h2 class="text-3xl font-serif tracking-widest uppercase text-slate-900">Our Selection</h2>
+      <h2 class="text-4xl font-serif tracking-tight text-slate-900 italic">La Sélection</h2>
       {#if vehicules.length > 1}
       <div class="flex gap-4">
-        <button on:click={prev} class="w-12 h-12 border border-slate-300 rounded-full hover:bg-black hover:text-white transition-all duration-300">←</button>
-        <button on:click={next} class="w-12 h-12 border border-slate-300 rounded-full hover:bg-black hover:text-white transition-all duration-300">→</button>
+        <button on:click={prev} class="w-12 h-12 border border-slate-200 rounded-full hover:bg-black hover:text-white transition-all duration-500 font-light text-xl">←</button>
+        <button on:click={next} class="w-12 h-12 border border-slate-200 rounded-full hover:bg-black hover:text-white transition-all duration-500 font-light text-xl">→</button>
       </div>
       {/if}
 
-      <div>
+      <div class="flex items-center gap-8">
         <BookingButton />
-        <span class="text-sm tracking-[0.2em] text-slate-400 uppercase font-medium">
+        <span class="text-[10px] tracking-[0.3em] text-slate-400 uppercase font-bold">
           {currentIndex + 1} / {vehicules.length}
         </span>
       </div>
     </div>
 
     {#if current}
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
         
         {#key currentIndex}
         <div in:fly={{ x: -20, duration: 600 }} out:fade={{ duration: 300 }} class="flex flex-col h-full sticky top-24">
-          <span class="text-[10px] tracking-[0.4em] text-indigo-600 uppercase font-bold mb-4 block">
-            Ref. 00{currentIndex + 1}
+          <span class="text-[10px] tracking-[0.6em] text-slate-400 uppercase font-bold mb-8 block">
+            Archives — No.{String(currentIndex + 1).padStart(3, '0')}
           </span>
           
-          <h3 class="text-6xl font-serif mb-6 text-slate-900 uppercase tracking-tighter leading-none">
+          <h3 class="text-7xl md:text-8xl font-serif mb-10 text-slate-900 tracking-tight leading-[0.9] italic">
             {current.model}
           </h3>
 
-          <div class="max-w-md mb-8 pr-4 h-[500px] overflow-y-auto custom-scrollbar">
-            <p class="text-slate-600 text-lg leading-relaxed italic font-light">
+          <div class="max-w-md mb-12 pr-10 h-[350px] overflow-y-auto custom-scrollbar border-l border-slate-100 pl-8">
+            <p class="text-slate-500 text-xl leading-relaxed font-light italic">
               {current.description}
             </p>
           </div>
 
-          <div class="text-4xl font-light text-slate-900 mt-12 mb-10 border-b border-slate-300 pb-6 w-full">
-            {current.price.toLocaleString()} €
+          <div class="text-6xl font-serif text-slate-900 mt-auto mb-10 border-b border-slate-100 pb-10 w-full flex justify-between items-baseline">
+            <span class="text-[10px] uppercase tracking-[0.4em] text-slate-400 font-bold">Investissement</span>
+            <span>{current.price.toLocaleString()}€</span>
           </div>
 
         </div>

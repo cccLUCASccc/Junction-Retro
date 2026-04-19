@@ -38,5 +38,5 @@
   type="button"
   class="border border-slate-900 text-slate-900 px-8 py-4 text-[10px] uppercase tracking-[0.3em] hover:cursor-pointer hover:bg-slate-900 hover:text-white transition-all font-bold"
 >
-  Book a Call
+  Réserver une Consultation
 </button>

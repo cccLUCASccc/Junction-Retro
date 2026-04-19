@@ -40,11 +40,11 @@
     </div>
 
     {#if current}
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-start">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-start lg:items-stretch">
         
         <!-- Left: Information (5 cols) - Sticky -->
         {#key currentIndex}
-        <div in:fly={{ x: -30, duration: 800, delay: 200 }} out:fade={{ duration: 400 }} class="lg:col-span-5 flex flex-col lg:sticky lg:top-40">
+        <div in:fly={{ x: -30, duration: 800, delay: 200 }} out:fade={{ duration: 400 }} class="lg:col-span-5 flex flex-col lg:sticky lg:top-40 h-fit">
           <span class="text-[10px] tracking-[0.8em] text-slate-400 uppercase font-bold mb-10 block">
             Automotive Heritage — Arch. {current.id || '00' + (currentIndex + 1)}
           </span>
@@ -78,9 +78,9 @@
         {/key}
 
         <!-- Right: Scrollable Gallery (7 cols) -->
-        <div class="lg:col-span-7">
+        <div class="lg:col-span-7 relative min-h-[500px] lg:min-h-0">
           {#if current.images && current.images.length > 0}
-            <div class="flex flex-col gap-12">
+            <div class="lg:absolute lg:inset-0 lg:overflow-y-auto flex flex-col gap-12 lg:pr-6 custom-scrollbar">
               {#each current.images as image, i}
                 {#key currentIndex}
                   <div 
@@ -98,7 +98,7 @@
               {/each}
             </div>
           {:else}
-            <div class="aspect-video w-full flex flex-col items-center justify-center bg-white border border-slate-100 italic text-slate-400 uppercase tracking-widest text-xs">
+            <div class="lg:absolute lg:inset-0 aspect-video w-full flex flex-col items-center justify-center bg-white border border-slate-100 italic text-slate-400 uppercase tracking-widest text-xs">
               Documentation Photographique en cours...
             </div>
           {/if}
@@ -112,5 +112,19 @@
 <style>
   :global(.font-serif) {
     font-family: 'Instrument Serif', serif;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 4px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 10px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
   }
 </style>

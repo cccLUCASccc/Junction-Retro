@@ -1,6 +1,8 @@
 ---
 import '../styles/global.css';
 import Footer from '../components/Footer.astro';
+import PostHogLayout from './PostHogLayout.astro';
+
 
 interface Props {
 	title?: string;
@@ -67,7 +69,9 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://junction
 		</nav>
 
 		<div class="pt-20">
-			<slot />
+			<PostHogLayout />
+				<slot />
+			</PostHogLayout>
 		</div>
 		
 		<Footer />

@@ -16,12 +16,7 @@
   <div class="max-w-[1800px] mx-auto">
     
     <!-- Header Navigation -->
-    <div class="flex justify-between items-end mb-24 border-b border-slate-200 pb-12">
-      <div class="max-w-xl">
-        <h2 class="text-xs uppercase tracking-[0.6em] text-slate-400 font-bold mb-4">Curated Archive</h2>
-        <p class="text-5xl font-serif text-slate-900 italic tracking-tight">Exceptional Pieces</p>
-      </div>
-      
+    <div class="flex justify-between items-end mb-24 border-b border-slate-200 pb-12">      
       <div class="flex items-center gap-12">
         <div class="flex gap-2">
           <button on:click={prev} class="group w-14 h-14 flex items-center justify-center border border-slate-200 rounded-full hover:bg-black transition-all duration-500">
